@@ -171,11 +171,23 @@ function greatestProduct (matrix) {
 
     var greatest =0;
     // horizontal
-    for(var i= 0; i< matrix.length; i++) {
-      for (var j=0; j< matrix[i].length-4; j++){
-          var product = matrix[i][j]*matrix[i][j+1]*matrix[i][j+2]*matrix[i][j+3];
+    var i, j, product;
+    for(i= 0; i< matrix.length; i++) {
+      for (j=0; j< matrix[i].length-3; j++){
+          product = matrix[i][j]*matrix[i][j+1]*matrix[i][j+2]*matrix[i][j+3];
+          if(product > greatest) greatest = product;
       }
     }
+
+    for(i= 0; i< matrix.length-3; i++) {
+      for (j=0; j< matrix.length; j++){
+          product = matrix[i][j]*matrix[i+1][j]*matrix[i+2][j]*matrix[i+3][j];
+
+          if(product > greatest) greatest = product;
+      }
+    }
+
+    return greatest;
 }
 
 var matrix = [
